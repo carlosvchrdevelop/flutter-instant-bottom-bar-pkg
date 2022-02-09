@@ -12,14 +12,16 @@ class FixedBottomNavigationBar extends _BottomNavigationBar {
       required List<BottomNavigationTabData> tabs,
       Color selectedItColor = defaultSelectedColor,
       Color unselectedItColor = defaultUnselectedColor,
-      Color backgroundColor = defaultBackgroundColor})
+      Color backgroundColor = defaultBackgroundColor,
+      AppBar? appBar})
       : super(
             key: key,
             tabs: tabs,
             type: BottomNavigationBarType.fixed,
             selectedItColor: selectedItColor,
             unselectedItColor: unselectedItColor,
-            backgroundColor: backgroundColor);
+            backgroundColor: backgroundColor,
+            appBar: appBar);
 }
 
 class ShiftingBottomNavigationBar extends _BottomNavigationBar {
@@ -28,14 +30,16 @@ class ShiftingBottomNavigationBar extends _BottomNavigationBar {
       required List<BottomNavigationTabData> tabs,
       Color selectedItColor = defaultSelectedColor,
       Color unselectedItColor = defaultUnselectedColor,
-      Color backgroundColor = defaultBackgroundColor})
+      Color backgroundColor = defaultBackgroundColor,
+      AppBar? appBar})
       : super(
             key: key,
             tabs: tabs,
             type: BottomNavigationBarType.shifting,
             selectedItColor: selectedItColor,
             unselectedItColor: unselectedItColor,
-            backgroundColor: backgroundColor);
+            backgroundColor: backgroundColor,
+            appBar: appBar);
 }
 
 class _BottomNavigationBar extends StatefulWidget {
@@ -44,13 +48,15 @@ class _BottomNavigationBar extends StatefulWidget {
   final Color selectedItColor;
   final Color unselectedItColor;
   final Color backgroundColor;
+  final AppBar? appBar;
   const _BottomNavigationBar(
       {Key? key,
       required this.tabs,
       required this.type,
       required this.selectedItColor,
       required this.unselectedItColor,
-      required this.backgroundColor})
+      required this.backgroundColor,
+      this.appBar})
       : super(key: key);
 
   @override
@@ -83,7 +89,9 @@ class _BottomNavigationBarState extends State<_BottomNavigationBar> {
       },
     );
     return Scaffold(
-        body: _kTabPages[_currentTabIndex], bottomNavigationBar: bottomNavBar);
+        appBar: widget.appBar,
+        body: _kTabPages[_currentTabIndex],
+        bottomNavigationBar: bottomNavBar);
   }
 }
 

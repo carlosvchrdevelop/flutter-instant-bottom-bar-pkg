@@ -9,13 +9,14 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Instant Bottom Bar demo',
       home: ShiftingBottomNavigationBar(
           selectedItColor: Colors.white,
           unselectedItColor: Colors.white60,
           backgroundColor: Colors.blue,
-          tabs: [
+          appBar: AppBar(title: const Text('ShiftingBottomNavigationBar')),
+          tabs: const [
             BottomNavigationTabData(
                 icon: Icons.person,
                 label: 'Account',
