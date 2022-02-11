@@ -13,7 +13,8 @@ class FixedBottomNavigationBar extends _BottomNavigationBar {
       Color selectedItColor = defaultSelectedColor,
       Color unselectedItColor = defaultUnselectedColor,
       Color backgroundColor = defaultBackgroundColor,
-      AppBar? appBar})
+      AppBar? appBar,
+      FloatingActionButton? floatingActionButton})
       : super(
             key: key,
             tabs: tabs,
@@ -21,7 +22,8 @@ class FixedBottomNavigationBar extends _BottomNavigationBar {
             selectedItColor: selectedItColor,
             unselectedItColor: unselectedItColor,
             backgroundColor: backgroundColor,
-            appBar: appBar);
+            appBar: appBar,
+            floatingActionButton: floatingActionButton);
 }
 
 class ShiftingBottomNavigationBar extends _BottomNavigationBar {
@@ -31,7 +33,8 @@ class ShiftingBottomNavigationBar extends _BottomNavigationBar {
       Color selectedItColor = defaultSelectedColor,
       Color unselectedItColor = defaultUnselectedColor,
       Color backgroundColor = defaultBackgroundColor,
-      AppBar? appBar})
+      AppBar? appBar,
+      FloatingActionButton? floatingActionButton})
       : super(
             key: key,
             tabs: tabs,
@@ -39,7 +42,8 @@ class ShiftingBottomNavigationBar extends _BottomNavigationBar {
             selectedItColor: selectedItColor,
             unselectedItColor: unselectedItColor,
             backgroundColor: backgroundColor,
-            appBar: appBar);
+            appBar: appBar,
+            floatingActionButton: floatingActionButton);
 }
 
 class _BottomNavigationBar extends StatefulWidget {
@@ -49,6 +53,7 @@ class _BottomNavigationBar extends StatefulWidget {
   final Color unselectedItColor;
   final Color backgroundColor;
   final AppBar? appBar;
+  final FloatingActionButton? floatingActionButton;
   const _BottomNavigationBar(
       {Key? key,
       required this.tabs,
@@ -56,7 +61,8 @@ class _BottomNavigationBar extends StatefulWidget {
       required this.selectedItColor,
       required this.unselectedItColor,
       required this.backgroundColor,
-      this.appBar})
+      this.appBar,
+      this.floatingActionButton})
       : super(key: key);
 
   @override
@@ -90,6 +96,7 @@ class _BottomNavigationBarState extends State<_BottomNavigationBar> {
     );
     return Scaffold(
         appBar: widget.appBar,
+        floatingActionButton: widget.floatingActionButton,
         body: _kTabPages[_currentTabIndex],
         bottomNavigationBar: bottomNavBar);
   }
