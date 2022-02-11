@@ -14,7 +14,7 @@ class FixedBottomNavigationBar extends _BottomNavigationBar {
       Color unselectedItColor = defaultUnselectedColor,
       Color backgroundColor = defaultBackgroundColor,
       AppBar? appBar,
-      FloatingActionButton? floatingActionButton})
+      Function? onTap})
       : super(
             key: key,
             tabs: tabs,
@@ -23,7 +23,7 @@ class FixedBottomNavigationBar extends _BottomNavigationBar {
             unselectedItColor: unselectedItColor,
             backgroundColor: backgroundColor,
             appBar: appBar,
-            floatingActionButton: floatingActionButton);
+            onTap: onTap);
 }
 
 class ShiftingBottomNavigationBar extends _BottomNavigationBar {
@@ -34,7 +34,7 @@ class ShiftingBottomNavigationBar extends _BottomNavigationBar {
       Color unselectedItColor = defaultUnselectedColor,
       Color backgroundColor = defaultBackgroundColor,
       AppBar? appBar,
-      FloatingActionButton? floatingActionButton})
+      Function? onTap})
       : super(
             key: key,
             tabs: tabs,
@@ -43,7 +43,7 @@ class ShiftingBottomNavigationBar extends _BottomNavigationBar {
             unselectedItColor: unselectedItColor,
             backgroundColor: backgroundColor,
             appBar: appBar,
-            floatingActionButton: floatingActionButton);
+            onTap: onTap);
 }
 
 class _BottomNavigationBar extends StatefulWidget {
@@ -53,7 +53,7 @@ class _BottomNavigationBar extends StatefulWidget {
   final Color unselectedItColor;
   final Color backgroundColor;
   final AppBar? appBar;
-  final FloatingActionButton? floatingActionButton;
+  final Function? onTap;
   const _BottomNavigationBar(
       {Key? key,
       required this.tabs,
@@ -62,7 +62,7 @@ class _BottomNavigationBar extends StatefulWidget {
       required this.unselectedItColor,
       required this.backgroundColor,
       this.appBar,
-      this.floatingActionButton})
+      this.onTap})
       : super(key: key);
 
   @override
@@ -92,11 +92,11 @@ class _BottomNavigationBarState extends State<_BottomNavigationBar> {
         setState(() {
           _currentTabIndex = index;
         });
+        if (widget.onTap != null) widget.onTap!(index);
       },
     );
     return Scaffold(
         appBar: widget.appBar,
-        floatingActionButton: widget.floatingActionButton,
         body: _kTabPages[_currentTabIndex],
         bottomNavigationBar: bottomNavBar);
   }
