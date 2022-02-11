@@ -14,6 +14,7 @@ class FixedBottomNavigationBar extends _BottomNavigationBar {
       Color unselectedItColor = defaultUnselectedColor,
       Color backgroundColor = defaultBackgroundColor,
       AppBar? appBar,
+      FloatingActionButton? floatingActionButton,
       Function? onTap})
       : super(
             key: key,
@@ -23,6 +24,7 @@ class FixedBottomNavigationBar extends _BottomNavigationBar {
             unselectedItColor: unselectedItColor,
             backgroundColor: backgroundColor,
             appBar: appBar,
+            floatingActionButtons: floatingActionButton,
             onTap: onTap);
 }
 
@@ -34,6 +36,7 @@ class ShiftingBottomNavigationBar extends _BottomNavigationBar {
       Color unselectedItColor = defaultUnselectedColor,
       Color backgroundColor = defaultBackgroundColor,
       AppBar? appBar,
+      FloatingActionButton? floatingActionButton,
       Function? onTap})
       : super(
             key: key,
@@ -43,6 +46,7 @@ class ShiftingBottomNavigationBar extends _BottomNavigationBar {
             unselectedItColor: unselectedItColor,
             backgroundColor: backgroundColor,
             appBar: appBar,
+            floatingActionButtons: floatingActionButton,
             onTap: onTap);
 }
 
@@ -53,6 +57,7 @@ class _BottomNavigationBar extends StatefulWidget {
   final Color unselectedItColor;
   final Color backgroundColor;
   final AppBar? appBar;
+  final FloatingActionButton? floatingActionButtons;
   final Function? onTap;
   const _BottomNavigationBar(
       {Key? key,
@@ -62,6 +67,7 @@ class _BottomNavigationBar extends StatefulWidget {
       required this.unselectedItColor,
       required this.backgroundColor,
       this.appBar,
+      this.floatingActionButtons,
       this.onTap})
       : super(key: key);
 
@@ -97,6 +103,7 @@ class _BottomNavigationBarState extends State<_BottomNavigationBar> {
     );
     return Scaffold(
         appBar: widget.appBar,
+        floatingActionButton: widget.floatingActionButtons,
         body: _kTabPages[_currentTabIndex],
         bottomNavigationBar: bottomNavBar);
   }
